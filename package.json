@@ -22,7 +22,9 @@
   "author": "Jerry Relunia",
   "license": "MIT",
   "devDependencies": {
+    "body-parser": "^1.16.1",
     "eslint": "^3.15.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "morgan": "^1.8.1"
   }
 }

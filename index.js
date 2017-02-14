@@ -3,9 +3,9 @@ var cors = require('cors');
 
 // https://murmuring-garden-99473.herokuapp.com/
 const app = express();
-const questions = require('./questions.js');
+const questions = require('./routes/questions.js');
 const logger = require('morgan');
-const jsonParser = require('body-parser').json;
+const bodyParser = require('body-parser');
 //c:/users/jerry/documents/qa-rest-api project 
 app.use(cors());
 
@@ -14,7 +14,8 @@ app.set('port', (process.env.PORT || 5000));
 //configure middleware to give us colorful status codes
 app.use(logger("dev"));
 //When app receives a request this middleware will parse the request as JSON and make it accessible from the request's body property
-app.use(jsonParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // point to question routes
 app.use("/questions",questions);
