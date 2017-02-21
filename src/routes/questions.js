@@ -62,7 +62,7 @@ router.delete("/:qID/answers/:aID", function(req,res) {
 router.post("/:qID/answers/:aID/vote-:dir", function(req,res,next){
     //regular expressions with caret and dollar sign to signify we want these exact values and nothing after
     if (req.params.dir.search(/^(up|down)$/) === -1 ) {
-        var err = new Error("Not found");
+        var err = new Error("vote type Not found");
         err.status = 404;
         next(err); //use next if handler doesnt send a response(ie. res.json) to client
     } else {
@@ -79,4 +79,4 @@ router.post("/:qID/answers/:aID/vote-:dir", function(req,res,next){
 });
 
 
-module.exports = router;
+export default router;

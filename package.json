@@ -1,15 +1,21 @@
 {
   "name": "node-api-heroku",
   "version": "1.0.0",
-  "description": "A simple API built in Node and Express hosted on Heroku",
+  "description": "A comprehensive API examples built in Node and Express hosted on Heroku",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "prestart": "babel src --out-dir dist",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build": "babel src --out-dir dist",
+    "sandbox": "babel-node src/sandbox.js"
   },
   "dependencies": {
     "body-parser": "^1.16.1",
     "cors": "2.8.1",
+    "dotenv": "^4.0.0",
     "express": "4.13.3",
+    "mongoose": "^4.8.2",
     "morgan": "^1.8.1"
   },
   "engines": {
@@ -22,9 +28,11 @@
   "author": "Jerry Relunia",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "body-parser": "^1.16.1",
     "eslint": "^3.15.0",
     "eslint-plugin-import": "^2.2.0",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0"
   }
 }
