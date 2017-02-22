@@ -18,7 +18,7 @@ const connection = function connection() {
     mongoose.connect(mongodbUri);
 
     db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function callback() {                   //listen on open even once, insert model and schemas
+    db.once('open', function callback() {                   //listen on open even once,
             console.log('hey hey, mongodb opened');
             });
 };

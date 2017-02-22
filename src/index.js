@@ -9,6 +9,7 @@ import questions from './routes/questions.js';
 import bears from './routes/bears.js';
 import famtree from './routes/famtree.js';
 import standup from './routes/standup.js';
+import questionsMongoose from './routes/questions_mongoose.js';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 
@@ -55,6 +56,7 @@ app.use("/questions",questions);
 app.use("/bears", bears);
 app.use("/famtree", famtree);
 app.use("/standup", standup);
+app.use("/questionsmdb", questionsMongoose);
 
 // some test routes from route
 app.get('/', function(request, response) {
