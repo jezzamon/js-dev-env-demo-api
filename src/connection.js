@@ -19,7 +19,7 @@ const connection = function connection() {
 
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function callback() {                   //listen on open even once, insert model and schemas
-            console.log('hey jerry, multivision db opened');
+            console.log('hey hey, mongodb opened');
             });
 };
 

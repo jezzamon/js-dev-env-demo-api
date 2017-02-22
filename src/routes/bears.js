@@ -6,6 +6,9 @@ mongoose.Promise = global.Promise;
 const Bear = require('../models/bear');
 
 
+const onSave = (req, res, data) => {
+  res.json({message: 'saved!', data: data});
+}
 
 const onError = (err) =>
 console.log(err);
@@ -33,19 +36,10 @@ router.route('/')
 
     bear.save()
       .then((data) => {
-        res.json({
-          message: 'Bear created',
-          data: data
-        });
+        onSave(req, res, data);
       })
       .catch(onError);
   });
 //
 export default router;
 
-
-/*
-(err) => {
-            res.json({"err": err});
-        }
-        */

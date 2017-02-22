@@ -13,6 +13,29 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 
 app.use(cors());
+//SET UP YOUR API TO BE USED BY ANY BROWSER (just for reference, cors package is handling this)
+// app.use(function(req,res,next){
+//    res.header("Access-Control-Allow-Origin","*"); //* allow requests from any domain
+//    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+//    if(req.method === "OPTIONS") {
+//        res.header("Access-Control-Allow-Methods", "PUT,POST,DELETE");
+//         return res.status(200).json({});
+//    }
+
+//    next();
+// });
+
+// IF YOU'D LIKE TO SET UP A TEMPLATING ENGINE USING HTML (set up a views folder)
+    //SETUP PUBLIC FILES
+    // app.use(express.static(path.join(__dirname, 'public')));
+
+    // SETUP SWIG
+    // var swig = require('swig');
+    // app.engine('html', swig.renderFile);
+    // app.set('view engine', 'html');
+
+    // app.set('views', path.join(__dirname, 'views'));
+
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -33,17 +56,9 @@ app.use("/bears", bears);
 app.use("/famtree", famtree);
 app.use("/standup", standup);
 
+// some test routes from route
 app.get('/', function(request, response) {
   response.send('Hello World!')
-});
-
-app.get('/users', function(req, res) {
-  // Hard coding for simplicity. Pretend this hits a real database
-  res.json([
-    {"id": 1,"firstName":"Jerry","lastName":"Relunia","email":"zz@gmail.com"},
-    {"id": 2,"firstName":"Berry","lastName":"Relunia","email":"zzz@yahoo.com"},
-    {"id": 3,"firstName":"Muff","lastName":"Relunia","email":"zzzz@hotmail.com"}
-  ]);
 });
 
 // catch 404 and forward to error handler (note: res.json exits the script, so it doesnt get this far)

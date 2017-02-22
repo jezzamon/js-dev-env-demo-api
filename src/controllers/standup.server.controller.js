@@ -7,8 +7,12 @@ exports.list = (req,res) => {
     .limit(12) //limit by 12
     .exec( (err,results) => {
       // console.log(results);
-      res.render('index', {title: 'Standup - List', notes: results});
-    });
+      if (err) {
+        res.json({message: 'error!', error: err});
+      } else {
+      res.json({title: 'sorted list', notes: results});
+      }
+  });
 };
 
 exports.filterByMember = function(req, res) {
@@ -24,7 +28,7 @@ exports.filterByMember = function(req, res) {
 
     query.exec(function(err, results) {
         // console.log(results);
-        res.render('index', { title: 'Standup - List', notes: results });
+        res.json({ title: 'Standup - List', notes: results });
     });
 };
 
@@ -36,19 +40,19 @@ exports.create = (req,res) => {
     workToday: req.body.workToday,
     impediment: req.body.impediment
   });
-  entry.save( (err) => {
+  entry.save( (err,data) => {
     if (err) {
       let errMsg = `Sorry, the was an error saving the meeting note. ${err}`;
-      res.render('newnote', { title: 'Standup - New Note (error)', message: errMsg});
+      res.json({ title: 'Standup - New Note (error)', message: errMsg});
     } else {
       // console.log('Stand-up meeting note saved');
       // Redirect to home page
-      res.redirect(301, '/');
+      res.json({message: 'saved!', data: data});
     }
   });
 
 };
 
 exports.getNote = (req,res) => {
-  res.render('newnote', { title: 'Standup - new note'});
+  res.json({ title: 'Standup - new note'});
 };
