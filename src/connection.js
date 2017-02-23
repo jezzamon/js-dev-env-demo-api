@@ -10,8 +10,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const connection = function connection() {
-    // const mongodbUri = `${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds051334.mongolab.com:51334/multivision`;
-    var mongodbUri = 'mongodb://localhost/famtree';
+    const mongodbUri = `${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds051334.mongolab.com:51334/multivision`;
+    // var mongodbUri = 'mongodb://localhost/famtree';
 
     // CONFIGURE MONGOOSE CONNECTION
     const db = mongoose.connection;
