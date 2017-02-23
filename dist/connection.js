@@ -12,8 +12,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 var connection = function connection() {
-    // const mongodbUri = `${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds051334.mongolab.com:51334/multivision`;
-    var mongodbUri = 'mongodb://localhost/famtree';
+    var mongodbUri = process.env.MONGO_USERNAME + ':' + process.env.MONGO_PASSWORD + '@ds051334.mongolab.com:51334/multivision';
+    // var mongodbUri = 'mongodb://localhost/famtree';
 
     // CONFIGURE MONGOOSE CONNECTION
     var db = mongoose.connection;
@@ -21,8 +21,8 @@ var connection = function connection() {
 
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function callback() {
-        //listen on open even once, insert model and schemas
-        console.log('hey jerry, multivision db opened');
+        //listen on open even once,
+        console.log('hey hey, mongodb opened');
     });
 };
 

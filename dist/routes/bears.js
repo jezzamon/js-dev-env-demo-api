@@ -16,6 +16,10 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var Bear = require('../models/bear');
 
+var onSave = function onSave(req, res, data) {
+  res.json({ message: 'saved!', data: data });
+};
+
 var onError = function onError(err) {
   return console.log(err);
 };
@@ -38,17 +42,8 @@ router.route('/')
   bear.color = req.body.color;
 
   bear.save().then(function (data) {
-    res.json({
-      message: 'Bear created',
-      data: data
-    });
+    onSave(req, res, data);
   }).catch(onError);
 });
 //
 exports.default = router;
-
-/*
-(err) => {
-            res.json({"err": err});
-        }
-        */
