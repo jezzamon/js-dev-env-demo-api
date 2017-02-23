@@ -7,7 +7,7 @@ import path from 'path';
 const app = express();
 import questions from './routes/questions.js';
 import bears from './routes/bears.js';
-import famtree from './routes/famtree.js';
+// import famtree from './routes/famtree.js';
 import standup from './routes/standup.js';
 import questionsMongoose from './routes/questions_mongoose.js';
 import logger from 'morgan';
@@ -54,7 +54,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // ** ROUTES *******************************************/
 app.use("/questions",questions);
 app.use("/bears", bears);
-app.use("/famtree", famtree);
+// app.use("/famtree", famtree);
 app.use("/standup", standup);
 app.use("/questionsmdb", questionsMongoose);
 

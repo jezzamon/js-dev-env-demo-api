@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Helper function
-var sortAnswers = function (a,b) {
+let sortAnswers = function (a,b) {
     // - negative a before b
     // 0 if no change
     // + positive b before a
